@@ -6,19 +6,17 @@
 /*   By: cliew <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 21:30:41 by cliew             #+#    #+#             */
-/*   Updated: 2023/07/05 19:18:30 by cliew            ###   ########.fr       */
+/*   Updated: 2023/07/06 15:35:24 by cliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT
-#define FT_POINT
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-typedef struct ss
+typedef struct s_point
 {
-	int x;
-	int y;
-} t_point;
-
+	int	x;
+	int	y;
+}				t_point;
 
 #endif
-
