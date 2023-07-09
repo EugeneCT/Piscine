@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cliew <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 20:47:26 by cliew             #+#    #+#             */
-/*   Updated: 2023/07/06 15:52:24 by cliew            ###   ########.fr       */
+/*   Created: 2023/06/21 20:09:34 by cliew             #+#    #+#             */
+/*   Updated: 2023/06/21 21:32:15 by cliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
+#include <unistd.h>
 
-#ifndef FT_H
-# define FT_H
-
-void	ft_putchar(char c);
-void	ft_swap(int *a, int *b);
-void	ft_putstr(char *str);
-int		ft_strlen(char *str);
-int		ft_strcmp(char *s1, char *s2);
-
-#endif
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}

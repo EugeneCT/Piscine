@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cliew <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 21:30:41 by cliew             #+#    #+#             */
-/*   Updated: 2023/07/06 15:35:24 by cliew            ###   ########.fr       */
+/*   Created: 2023/06/23 11:35:22 by cliew             #+#    #+#             */
+/*   Updated: 2023/06/24 11:47:53 by cliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT_H
-# define FT_POINT_H
+#include <unistd.h>
 
-typedef struct s_point
+int	ft_strlen(char *str)
 {
-	int	x;
-	int	y;
-}				t_point;
+	int		count;
 
-#endif
+	count = 0;
+	while (str[count] != '\0')
+	{		
+		count++;
+	}
+	return (count);
+}

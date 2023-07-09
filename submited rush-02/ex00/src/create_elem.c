@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*   create_elem.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cliew <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: lteng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 21:24:23 by cliew             #+#    #+#             */
-/*   Updated: 2023/07/06 15:57:51 by cliew            ###   ########.fr       */
+/*   Created: 2023/07/08 18:31:31 by lteng             #+#    #+#             */
+/*   Updated: 2023/07/08 18:31:34 by lteng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ABS_H
-# define FT_ABS_H
+#include"../include/ft.h"
 
-# define ABS(n) (n*((n<0) ? -1 :1))
+t_ch	*create_elem(t_int value, char *line)
+{
+	t_ch	*res;
 
-#endif
+	res = malloc(sizeof(t_ch));
+	if (!res)
+		return (NULL);
+	res->next = NULL;
+	res->value = value;
+	res->line = line;
+	return (res);
+}
