@@ -13,89 +13,101 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	str_len(char *charset)
+int is_seperator(char str,char *charset)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (charset[i] != '\0')
 	{
-		i++;
+		if (str != charset[i])
+			i++;
+		else 
+			return (1);
 	}
-	return (i);
-}
 
-int	not_in(char a_char, char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i] != '\0')
-	{
-		if (a_char == charset[i])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	logic(char *str, char *charset, char **ret_list)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	while (str[i] != '\0')
-	{
-		if (not_in(str[i], charset))
-		{
-			ret_list[j][k] = str[i];
-			k++;
-		}
-		else
-		{
-			ret_list[j][k] = '\0';
-			j++;
-			k = 0;
-		}
-		i++;
-	}
-	ret_list[j][k] = '\0';
+	if (str == '\0')
+		return (1);
 	return (0);
 }
 
+int count_words(char *str,char *charset)
+{
+	int i;
+	int words;
+
+	i = 0;
+	words = 0;
+
+	while (str[i]!= '\0')
+	{
+		if ((is_seperator(str[i],charset) == 0) && (is_seperator(str[i+1],charset) == 1))
+			words++;
+		i++;
+	}
+	return (words);
+}
+
+
+void ft_copy(char *str, char *ret_list, int start, int end)
+{
+	int i = 0;
+	
+	while (i < end)
+	{
+		ret_list[i] = str[start+i];
+		i++;
+	}
+	ret_list[i] = '\0';
+}
+
+void main_logic(char **ret_list, char *str, char *charset)
+{
+	int start;
+	int end;
+	int word;
+
+	start = 0;
+	word = 0;
+
+	while (str[start] != '\0')
+	{
+		if ((is_seperator(str[start], charset) == 1))
+		{
+			start++;
+		}
+		else 
+		{
+			end = 0;
+			while (is_seperator(str[start + end],charset) == 0)
+				end++; 
+			ret_list[word] = (char *) malloc ((end + 1)*sizeof(char));
+			ft_copy(str,ret_list[word],start,end);
+			start = start + end;
+			word++;
+		}
+	}
+}
 char	**ft_split(char *str, char *charset)
 {
 	char	**ret_list;
-	int		max_str;
+	int		words;
 	int		i;
 
-	i = 0;
-	max_str = str_len(str);
-	ret_list = (char **)malloc((max_str + 2) * sizeof (char *));
-	if (max_str == 0)
-	{
-		ret_list[0] = 0;
-		return (ret_list);
-	}
-	while (i < max_str)
-	{
-		ret_list[i] = (char *)malloc ((max_str + 1) * sizeof(char));
-		i++;
-	}
-	logic(str, charset, ret_list);
+	words = count_words(str,charset);
+	ret_list = (char **) malloc ((words + 1) *sizeof(char *));
+	ret_list[words] = 0;
+	main_logic(ret_list,str,charset);
+
 	return (ret_list);
 }
 
-/*
+
 int main(int argc, char **argv)
 {
 	char	**result;
 	int i;
-	result = ft_split (argv[1], argv[2]);
+	result = ft_split (argv[1],argv[2]);
 	
 	while (i < 5)
 	{
@@ -107,4 +119,3 @@ int main(int argc, char **argv)
 	
 	return (0);
 }
-*/
