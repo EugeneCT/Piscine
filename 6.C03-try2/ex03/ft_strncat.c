@@ -5,35 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cliew <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 17:39:58 by cliew             #+#    #+#             */
-/*   Updated: 2023/06/26 17:48:42 by cliew            ###   ########.fr       */
+/*   Created: 2023/07/11 20:38:31 by cliew             #+#    #+#             */
+/*   Updated: 2023/07/11 20:38:34 by cliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	unsigned int	count1;
-	unsigned int	count2;
+	unsigned int	i;
+	int				str_len;
 
-	count1 = 0;
-	count2 = 0;
-	while (dest[count1] != '\0')
+	i = 0;
+	str_len = 0;
+	while (dest[str_len] != '\0')
+		str_len++;
+	while (src[i] != '\0' && i < nb)
 	{
-		count1++;
+		dest[str_len + i] = src[i];
+		i++;
 	}
-	while (src[count2] != '\0')
-	{
-		if (count2 < nb)
-		{
-			dest[count2 + count1] = src[count2];
-			count2++;
-		}
-		else
-		{
-			dest[count1 + count2] = '\0';
-			return (dest);
-		}
-	}
-	dest[count1 + count2] = '\0';
+	dest[str_len + i] = '\0';
 	return (dest);
 }

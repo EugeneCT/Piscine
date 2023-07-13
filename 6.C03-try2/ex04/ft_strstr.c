@@ -5,33 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cliew <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/01 20:25:24 by cliew             #+#    #+#             */
-/*   Updated: 2023/07/01 20:27:41 by cliew            ###   ########.fr       */
+/*   Created: 2023/07/11 20:38:54 by cliew             #+#    #+#             */
+/*   Updated: 2023/07/11 20:38:56 by cliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	int				diff;
+	unsigned int	i;
+
+	i = 0;
+	diff = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	{
+		diff = s1[i] - s2[i];
+		i++;
+		if (diff != 0)
+			return (diff);
+	}
+	return (diff);
+}
+
 char	*ft_strstr(char *str, char *to_find)
 {
-	int	sp;
-	int	fp;
+	int	i;
+	int	len;
 
-	sp = 0;
-	if (*to_find == '\0')
+	i = 0;
+	len = 0;
+	while (to_find[len] != '\0')
+		len++;
+	if (len == 0)
+		return (str);
+	while (str[i] != '\0')
 	{
-		return ((char *) str);
-	}
-	while (str[sp] != '\0')
-	{
-		fp = 0;
-		while (to_find[fp] != '\0' && str[sp + fp] == to_find[fp])
-		{
-			if (to_find[fp + 1] == '\0')
-			{
-				return ((char *) &str[sp]);
-			}
-			fp++;
-		}
-		sp++;
+		if (ft_strncmp(&str[i], to_find, len) == 0)
+			return (&str[i]);
+		i++;
 	}
 	return (NULL);
 }

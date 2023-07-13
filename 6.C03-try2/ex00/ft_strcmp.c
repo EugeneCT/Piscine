@@ -5,19 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cliew <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 14:52:32 by cliew             #+#    #+#             */
-/*   Updated: 2023/06/26 17:43:29 by cliew            ###   ########.fr       */
+/*   Created: 2023/07/11 20:37:18 by cliew             #+#    #+#             */
+/*   Updated: 2023/07/11 20:37:24 by cliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
+	int	diff;
 
 	i = 0;
-	while (s1[i] == s2[i] && (s1[i] != '\0' || s2[i] != '\0'))
+	diff = 0;
+	while (s1[i] != '\0' || s2[i] != '\0')
 	{
+		diff = s1[i] - s2[i];
 		i++;
+		if (diff != 0)
+			return (diff);
 	}
-	return (s1[i] - s2[i]);
+	return (diff);
 }

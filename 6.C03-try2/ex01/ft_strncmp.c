@@ -5,25 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cliew <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 15:21:15 by cliew             #+#    #+#             */
-/*   Updated: 2023/06/26 17:45:07 by cliew            ###   ########.fr       */
+/*   Created: 2023/07/11 20:37:44 by cliew             #+#    #+#             */
+/*   Updated: 2023/07/11 20:37:46 by cliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;
+	int				diff;
 
 	i = 0;
-	if (n == 0)
+	diff = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
 	{
-		return (0);
-	}
-	while (s1[i] == s2[i] && (s1[i] != '\0' || s2[i] != '\0') && (i < n - 1))
-	{
+		diff = s1[i] - s2[i];
 		i++;
-	}
-	return (s1[i] - s2[i]);
+		if (diff != 0)
+			return (diff);
+	}	
+	return (diff);
 }

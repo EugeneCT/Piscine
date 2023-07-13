@@ -6,7 +6,7 @@
 /*   By: cliew <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 21:00:28 by cliew             #+#    #+#             */
-/*   Updated: 2023/06/29 17:09:55 by cliew            ###   ########.fr       */
+/*   Updated: 2023/07/10 21:06:47 by cliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,10 @@ int	ft_strlen(char *str)
 		i++;
 	}
 	return (i);
+}
+int main(int argc, char**argv)
+
+{
+	int len;	
+	len = ft_strlen(argv[1]);
 }
